@@ -1,0 +1,108 @@
+/* Container styling */
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  min-height: 100vh;
+  background-color: #82b37f;
+  overflow-y: auto; /* Allow scrolling */
+}
+
+/* Reviews section styling */
+.reviews-section {
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 4rem; /* Only one margin-top */
+  background-color: rgba(54, 95, 60, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Show pointer cursor */
+  overflow-y: auto; /* Make section scrollable */
+  max-height: 80vh; /* Limit the height to enable scroll */
+}
+
+/* Section hover effect */
+.reviews-section:hover {
+  scrollbar-width: thin;
+  scrollbar-color: #82b37f #333; /* Custom scrollbar color */
+}
+
+/* Scrollbar styling for Webkit (Chrome, Safari) */
+.reviews-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reviews-section::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 10px;
+}
+
+.reviews-section::-webkit-scrollbar-thumb {
+  background-color: #82b37f;
+  border-radius: 10px;
+}
+
+/* Other styles */
+.reviews-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.review-card {
+  background-color: #fff;
+  color: #333;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.review-card p {
+  margin-bottom: 1rem;
+}
+
+.rating {
+  display: flex;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-right: 0.5rem;
+}
+
+.star.filled {
+  color: #ffb400;
+}
+
+.add-review-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #365f3c; /* Button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.add-review-button:hover {
+  background-color: #365f3c; /* Darker shade on hover */
+}

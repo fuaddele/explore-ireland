@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #82b37f; /* Green */
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px; /* Added padding for small screens */
+}
+
+.form-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2.5rem; /* Increased padding */
+  border-radius: 12px; /* Slightly more rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  width: 100%; /* Full width for mobile */
+  max-width: 600px; /* Increased max width for smaller screens */
+  text-align: center;
+}
+
+.form-container h1 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 2rem; /* Increased font size */
+}
+
+.subheading {
+  color: #b0b0b0; /* Light gray for the subheading */
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Increased space between form groups */
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: bold; /* Bold labels */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem; /* Increased padding */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.form-group input:focus {
+  border: 1px solid #365f3c; /* Highlight on focus */
+}
+
+.btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #365f3c; /* Dark Green */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem; /* Slightly larger font size */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #2b4e36; /* Darker shade on hover */
+}
+
+.login-link {
+  margin-top: 1.5rem; /* Increased space above login link */
+  color: #fff;
+}
+
+.login-link a {
+  color: #82b37f; /* Link color */
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1.5rem; /* Less padding on smaller screens */
+  }
+
+  .form-container h1 {
+    font-size: 1.5rem; /* Adjust heading size for small screens */
+  }
+
+  .form-group input {
+    padding: 0.5rem; /* Reduced padding for inputs on small screens */
+  }
+
+  .btn {
+    padding: 0.75rem; /* Adjust button padding */
+    font-size: 1rem; /* Adjust button font size */
+  }
+}
+
+/* Increased width for desktop */
+@media (min-width: 769px) {
+  .form-container {
+    width: 140%; /* Set width to 140% for larger screens */
+    max-width: none; /* Remove max-width constraint */
+    margin-left: -20%; /* Center the form by adjusting the left margin */
+  }
+}

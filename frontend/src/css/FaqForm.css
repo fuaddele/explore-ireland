@@ -1,0 +1,106 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reviews Container Styling */
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  min-height: 100vh;
+  background-color: #82b37f;
+  overflow-y: auto; /* Allow scrolling */
+}
+
+/* Reviews Section Styling */
+.reviews-section {
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 4rem;
+  background-color: rgba(54, 95, 60, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.reviews-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* FAQ Form Styling */
+.faq-form-container {
+  width: 150%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgba(60, 105, 70, 0.9); /* Updated green tone */
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.faq-form label {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  text-align: left;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.faq-form input,
+.faq-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #517d56;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: black;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.faq-form input:focus,
+.faq-form textarea:focus {
+  outline: none;
+  border-color: #6a9b71;
+}
+
+.faq-form button {
+  background-color: #517d56;
+  color: white;
+  padding: 12px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.faq-form button:hover {
+  background-color: #6a9b71;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .faq-form-container {
+    width: 95%;
+    padding: 20px;
+  }
+}

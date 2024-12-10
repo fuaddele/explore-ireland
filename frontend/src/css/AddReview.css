@@ -1,0 +1,134 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0; /* Lighter, more neutral background color */
+  color: #333; /* Dark text for better readability */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* Add Review Section */
+.add-review {
+  margin-top: 5rem;
+  width: 34vw;
+  padding: 2rem 5rem;
+  background-color: rgba(60, 105, 70, 0.9); /* Updated green tone */
+  border-radius: 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  transition: transform 0.3s ease;
+}
+
+.add-review:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.add-review h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.add-review form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-review label {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  text-align: left;
+  color: #fff; /* Label text color */
+}
+
+.add-review input,
+.add-review textarea {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 2px solid #b0b0b0; /* Changed input border color */
+  border-radius: 8px; /* Slightly more rounded corners */
+  width: 100%;
+  font-size: 1rem;
+  color: #555; /* Darker text color for better contrast */
+  background-color: #f4f4f4; /* Changed to a neutral background */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-review input::placeholder,
+.add-review textarea::placeholder {
+  color: #888888; /* Medium gray placeholder text */
+}
+
+.add-review input:focus,
+.add-review textarea:focus {
+  outline: none;
+  border: 2px solid #6cbf6d; /* Softer green border on focus */
+  background-color: #e4f9e2; /* Light green background on focus */
+  box-shadow: 0 0 8px rgba(108, 191, 109, 0.5); /* Subtle green shadow on focus */
+}
+
+.add-review textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.add-review button {
+  background-color: #517d56; /* Softer green tone */
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px; /* Slightly more rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%; /* Full width button */
+}
+
+.add-review button:hover {
+  background-color: #6a9b71; /* Hover color with lighter green */
+  transform: scale(1.05); /* Slight grow effect on hover */
+}
+
+.add-review button:active {
+  transform: scale(1); /* Normalize size when clicked */
+}
+
+/* Rating Stars */
+.rating-section .stars {
+  font-size: 1.5rem;
+  color: #ffe600; /* Bright yellow for stars */
+}
+
+.rating-section .stars .star.filled {
+  color: #ffcc00; /* Filled star color */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-review {
+    width: 97vw;
+    padding: 2rem;
+    margin-top: 5rem;
+  }
+
+  .add-review input,
+  .add-review textarea {
+    font-size: 1.1rem; /* Slightly larger font for better readability */
+  }
+
+  .add-review button {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+}

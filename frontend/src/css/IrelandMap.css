@@ -1,0 +1,90 @@
+/* Reset styles */
+* {
+  margin: 7px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.map-container {
+  position: fixed;
+  top: 0;
+  padding-top: 19vh;
+  left: 20px; /* Add a 20px margin from the left edge */
+  width: calc(100vw - 20px); /* Adjust width to maintain responsiveness */
+  height: 100vh;
+}
+
+/* Inputs container */
+.inputs-container {
+  position: absolute;
+  top: 50px; /* Adjusted to move inputs lower */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Above the map */
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  margin: 10px 0 10px 20px; /* Add 20px left margin */
+  padding: 12px;
+  width: 400px; /* Increased width */
+  border: 2px solid #2e4a2c;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #365f3c;
+  transition: box-shadow 0.3s;
+}
+
+.calculate-btn {
+  padding: 10px 20px;
+  background-color: #2e4a2c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.calculate-btn:hover {
+  background-color: #365f3c;
+}
+
+.filter-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-container input {
+  padding: 8px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.filter-container button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.filter-container button:hover {
+  background-color: #0056b3;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}

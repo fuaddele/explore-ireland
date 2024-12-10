@@ -1,0 +1,95 @@
+/* EditProfile.css */
+
+.edit-profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  margin-top: 268px; /* Add margin-top for spacing */
+  min-height: 100vh; /* Full height for better appearance */
+}
+
+.edit-profile-section {
+  background-color: white; /* White background for the form */
+  padding: 30px;
+  border-radius: 10px; /* More pronounced rounded corners */
+  width: 100%;
+  max-width: 450px; /* Increased max width for better form layout */
+}
+
+.edit-profile-section h2 {
+  margin-bottom: 20px; /* Space below the heading */
+  font-size: 28px; /* Larger heading size */
+  text-align: center; /* Centered heading */
+  color: #333; /* Darker color for better contrast */
+}
+
+.edit-profile-section form {
+  display: flex;
+  flex-direction: column; /* Stack form fields vertically */
+}
+
+.edit-profile-section label {
+  margin-bottom: 10px; /* Space below labels */
+  font-weight: bold; /* Bold labels */
+  color: #555; /* Softer label color */
+}
+
+.edit-profile-section input[type="text"],
+.edit-profile-section input[type="email"],
+.edit-profile-section input[type="file"] {
+  padding: 12px; /* Increased padding for better touch targets */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 6px; /* Rounded corners */
+  margin-bottom: 20px; /* Space between fields */
+  font-size: 16px; /* Larger font size for readability */
+  transition: border-color 0.3s; /* Smooth border color change */
+  width: 100%; /* Full width for input fields */
+  background-color: #f9f9f9; /* Light background for inputs */
+  color: black; /* Black text color inside inputs */
+}
+
+.edit-profile-section input[type="text"]:focus,
+.edit-profile-section input[type="email"]:focus {
+  border-color: #4caf50; /* Highlight border on focus */
+  outline: none; /* Remove default outline */
+}
+
+.edit-profile-section button {
+  padding: 12px;
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text for button */
+  border: none; /* No border */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Match button font size with input */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+.edit-profile-section button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.edit-profile-section p {
+  text-align: center; /* Center text for error messages */
+  color: red; /* Red color for error messages */
+}
+
+/* Responsive Styles */
+@media (max-width: 500px) {
+  .edit-profile-section {
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .edit-profile-section h2 {
+    font-size: 24px; /* Slightly smaller heading size */
+  }
+
+  .edit-profile-section input[type="text"],
+  .edit-profile-section input[type="email"],
+  .edit-profile-section input[type="file"],
+  .edit-profile-section button {
+    font-size: 14px; /* Smaller font size for better fit */
+  }
+}

@@ -1,0 +1,94 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #e0f0db; /* Soft green background */
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #ffeb3b; /* Bright yellow hover effect */
+}
+
+/* Full-page container */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* About Section */
+.about-section {
+  text-align: center;
+  flex: 1; /* Ensures this section takes the full available height */
+  max-width: 1200px;
+  margin: 180px auto; /* Added 50px margin to the top */
+  padding: 40px; /* Slightly reduced padding */
+  background-color: #294b33; /* Softer green background */
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+}
+
+/* Flexbox layout for flag and text */
+.about-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between columns */
+}
+
+/* Flag Container */
+.flag-container {
+  flex: 1; /* 50% width for the flag */
+  display: flex;
+  justify-content: center; /* Center the flag */
+}
+
+.irish-flag {
+  width: 70%; /* Ensure the flag image scales well */
+  max-width: 900px; /* Set a max width for the flag */
+}
+
+/* Text Content */
+.text-content {
+  flex: 1; /* 50% width for the text */
+  text-align: justify !important;
+  /* Align text to the left */
+}
+
+/* Footer */
+.footer {
+  background-color: #4e9a65;
+  color: white;
+  text-align: center;
+  padding: 10px 0; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column; /* Stack on smaller screens */
+    text-align: center; /* Center text on small screens */
+  }
+
+  .irish-flag {
+    max-width: 20%; /* Full width for the flag on mobile */
+  }
+}
