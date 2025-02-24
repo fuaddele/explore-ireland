@@ -10,8 +10,8 @@ const transporter = nodemailer.createTransport({
   host: "sandbox.smtp.mailtrap.io",
   port: 2525,
   auth: {
-    user: "1199036a63620b",
-    pass: "fd4db8445d7203",
+    user: "68fb83ea3791cc",
+    pass: "42c8c1e237961e",
   },
   secure: false,
   tls: {
@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
     // Email to Admin
     const adminMailOptions = {
       from: process.env.EMAIL_USER,
-      to: "coriowhite123@gmail.com", // Replace with admin's email
+      to: "fuaddganiyu@gmail.com", // Replace with admin's email
       subject: "New FAQ Submitted",
       text: `A new FAQ has been submitted by ${name}.\n\nQuestion: ${faq}\n\nEmail: ${email}`,
     };

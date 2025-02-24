@@ -6,8 +6,8 @@ const transporter = nodemailer.createTransport({
   host: "sandbox.smtp.mailtrap.io",
   port: 2525,
   auth: {
-    user: "1199036a63620b",
-    pass: "fd4db8445d7203",
+    user: "68fb83ea3791cc",
+    pass: "42c8c1e237961e",
   },
   secure: false,
   tls: {
@@ -43,8 +43,8 @@ exports.addReview = async (req, res) => {
 
     // Email options for admin
     const mailOptionsAdmin = {
-      from: "coriowhite123@gmail.com", // Sender's email
-      to: "coriowhite123@gmail.com", // Replace with the actual admin email
+      from: "fuaddganiyu@gmail.com", // Sender's email
+      to: "fuaddganiyu@gmail.com", // Replace with the actual admin email
       subject: "New Review Submitted",
       html: getEmailTemplate(review),
     };
@@ -60,7 +60,7 @@ exports.addReview = async (req, res) => {
 
     // Email options for user
     const mailOptionsUser = {
-      from: "coriowhite123@gmail.com", // Sender's email
+      from: "fuaddganiyu@gmail.com", // Sender's email
       to: userEmail, // User's email who submitted the review
       subject: "Thank You for Your Review!",
       html: `
