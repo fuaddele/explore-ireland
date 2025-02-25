@@ -9,7 +9,6 @@ import IrelandMap from "./pages/IrelandMap";
 import AddReview from "./pages/AddReview";
 import ReviewsPage from "./pages/ReviewsPage";
 import FAQPage from "./pages/FAQPage";
-import HelpAndFAQs from "./pages/Help&FAQs";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Faq from "./pages/Faq";
@@ -25,7 +24,6 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/add_review" element={<AddReview />} />
-        <Route path="/help-faqs" element={<HelpAndFAQs />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/update-profile/:id" element={<EditProfile />} />
