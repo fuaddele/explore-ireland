@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/ireland";
+const mongoURI = process.env.MONGO_URI
 
 // Middleware to enable CORS
 app.use(
