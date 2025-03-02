@@ -12,10 +12,21 @@ app.use(express.urlencoded({ extended: true }));
 
 const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/ireland";
 
+const allowedOrigins = [
+  "http://localhost:5173", // Local frontend
+  process.env.FRONTEND_URL, // Production frontend (Render or any other hosting)
+];
+
 // Middleware to enable CORS
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow your frontend origin
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
     credentials: true, // Allow credentials to be included
   })
