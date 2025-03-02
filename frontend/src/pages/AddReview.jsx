@@ -11,12 +11,14 @@ const AddReview = () => {
   const [userEmail, setUserEmail] = useState(""); // State for user email
   const [title, setTitle] = useState(""); // State for review title
 
+  const API_URL = import.meta.env.VITE_API_URL; // Get the API URL from the environment variables
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       // Send data to the backend with title and content (now content)
-      const response = await axios.post("http://localhost:5000/api/reviews", {
+      const response = await axios.post(`${API_URL}/api/reviews`, {
         title, // Include title
         attractionName,
         content, // Content field is now the renamed content

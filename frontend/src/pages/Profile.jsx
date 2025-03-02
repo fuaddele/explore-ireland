@@ -20,8 +20,9 @@ const Profile = () => {
           setLoading(false);
           return;
         }
+        const API_URL = import.meta.env.VITE_API_URL;
 
-        const response = await fetch("http://localhost:5000/api/profile", {
+        const response = await fetch(`${API_URL}/api/profile`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -46,6 +47,8 @@ const Profile = () => {
 
     fetchUserProfile();
   }, []);
+  
+  const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
 
   const getProfilePictureUrl = (profilePicture) => {
     // Check if there's a profile picture and if it's a valid URL
@@ -53,7 +56,7 @@ const Profile = () => {
       // If it's a relative path, prepend the base URL
       return profilePicture.startsWith("http")
         ? profilePicture
-        : `http://localhost:5000/${profilePicture.replace(/\\/g, "/")}`;
+        : `${API_URL}/${profilePicture.replace(/\\/g, "/")}`;
     }
     // If no profile picture, return the default image
     return dp;

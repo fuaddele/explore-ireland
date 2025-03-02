@@ -6,11 +6,13 @@ import axios from "axios"; // Make sure axios is installed
 const ReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
+
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         // Fetch reviews from the API
-        const response = await axios.get("http://localhost:5000/api/reviews");
+        const response = await axios.get(`${API_URL}/api/reviews`);
         const fetchedReviews = response.data.reviews; // Access the reviews array in the response
 
         // Ensure that the fetched data is an array before setting it

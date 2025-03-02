@@ -15,6 +15,8 @@ const EditProfile = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL; // Get the API URL from the environment variables
+
   useEffect(() => {
     const fetchUserProfile = async () => {
       const token = localStorage.getItem("token");
@@ -26,7 +28,7 @@ const EditProfile = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:5000/api/profile", {
+        const response = await axios.get(`${API_URL}/api/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -64,7 +66,7 @@ const EditProfile = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/profile",
+        `${API_URL}/api/profile`,
         formData,
         {
           headers: {
@@ -103,7 +105,7 @@ const EditProfile = () => {
   const profilePictureUrl = user?.profilePicture
     ? user.profilePicture.startsWith("http") // Check if it's already a full URL
       ? user.profilePicture // If it's a full URL, use it directly
-      : `http://localhost:5000/${user.profilePicture}` // Otherwise, prepend the base URL
+      : `${API_URL}/${user.profilePicture}` // Otherwise, prepend the base URL
     : "https://via.placeholder.com/150"; // Placeholder image URL
 
   if (loading) return <div>Loading...</div>;

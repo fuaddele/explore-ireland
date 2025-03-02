@@ -9,8 +9,10 @@ exports.getProfile = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
+    const API_URL = process.env.VITE_API_URL || `${req.protocol}://${req.get("host")}`;
+
     if (user.profilePicture) {
-      user.profilePicture = `http://localhost:5000/${user.profilePicture.replace(
+      user.profilePicture = `${API_URL}/${user.profilePicture.replace(
         /\\/g,
         "/"
       )}`;
@@ -50,7 +52,8 @@ exports.updateProfile = async (req, res) => {
       await user.save();
 
       // Construct the full URL for the profile picture
-      const imageUrl = `${req.protocol}://${req.get("host")}/${
+      const API_URL = process.env.VITE_API_URL || `${req.protocol}://${req.get("host")}`;
+      const imageUrl = `${API_URL}/${
         user.profilePicture
       }`;
 

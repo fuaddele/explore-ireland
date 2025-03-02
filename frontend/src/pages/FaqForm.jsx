@@ -19,12 +19,14 @@ const FaqForm = () => {
     }));
   };
 
+  const API_URL = import.meta.env.VITE_API_URL; // Get the API URL from environment variables
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Set loading to true when the form is submitted
 
     try {
-      const response = await fetch("http://localhost:5000/api/faqs", {
+      const response = await fetch(`${API_URL}/api/faqs`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
