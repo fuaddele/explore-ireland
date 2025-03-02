@@ -48,6 +48,11 @@ connectDB();
 // Serve static files from the "uploads" directory
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// Default Route to Show Backend is Running
+app.get("/", (req, res) => {
+  res.send("Explore Ireland Backend is Running 🚀");
+});
+
 // Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/reviews", require("./routes/review"));
