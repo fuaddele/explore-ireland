@@ -33,6 +33,7 @@ const SignUp = () => {
     e.preventDefault();
 
     const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
+    console.log("API_URL:", API_URL); //Debugging
 
     try {
       const response = await fetch(`${API_URL}/api/auth/register`, {
