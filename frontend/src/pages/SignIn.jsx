@@ -32,7 +32,10 @@ const SignIn = () => {
     e.preventDefault();
 
     const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
-    console.log("API_URL:", API_URL); //Debugging
+
+    console.log("🚀 Checking VITE_API_URL...");
+    console.log("✅ Loaded API_URL:", import.meta.env.VITE_API_URL);
+
 
     try {
       const response = await fetch(`${API_URL}/api/auth/login`, {

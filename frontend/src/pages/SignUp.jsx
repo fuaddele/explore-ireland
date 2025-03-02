@@ -4,10 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "../css/SignUp.css";
 
 const SignUp = () => {
-
-  const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
-  console.log("API_URL:", API_URL); //Debugging
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,6 +32,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
     
 
     try {
