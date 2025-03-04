@@ -3,11 +3,11 @@ const Review = require("../models/Review");
 
 // Configure the transporter for sending emails using Mailtrap with direct credentials
 const transporter = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
-  port: 2525,
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
   auth: {
-    user: "68fb83ea3791cc",
-    pass: "42c8c1e237961e",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
   secure: false,
   tls: {

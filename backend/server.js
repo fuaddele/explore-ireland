@@ -50,7 +50,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Default Route to Show Backend is Running
 app.get("/", (req, res) => {
-  res.send("Explore Ireland Backend is Running 🚀");
+  res.send("Explore Ireland Backend is Running.");
 });
 
 // Routes
