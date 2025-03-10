@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2"; // Make sure to install SweetAlert2
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import "../css/SignUp.css";
 
@@ -10,16 +10,38 @@ const SignUp = () => {
     password: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { name, email, password } = formData;
 
   useEffect(() => {
-    // Check if token exists and redirect if so
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/landing"); // Redirect if user is already logged in
+      navigate("/landing");
     }
   }, [navigate]);
+
+  // Toggle password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const validateInputs = () => {
+    const newErrors = {};
+    const nameRegex = /^[A-Za-z\s]{3,}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+    if (!nameRegex.test(name)) newErrors.name = "Name must be at least 3 characters long.";
+    if (!emailRegex.test(email)) newErrors.email = "Please enter a valid email address.";
+    if (!passwordRegex.test(password)) {
+      newErrors.password = "Password must be at least 8 characters, include uppercase, lowercase, number, and special character.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,25 +49,24 @@ const SignUp = () => {
       ...prevState,
       [name]: value,
     }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateInputs()) return;
 
-    const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
-    
+    const API_URL = import.meta.env.VITE_API_URL;
 
     try {
       const response = await fetch(`${API_URL}/api/auth/register`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
       });
 
       const data = await response.json();
@@ -57,23 +78,34 @@ const SignUp = () => {
           icon: "success",
           confirmButtonText: "OK",
         });
-        // Store the token in localStorage
-        localStorage.setItem("token", data.token); // assuming the token is in data.token
-        // Redirect to the landing page or another page
-        navigate("/landing"); // Adjust this route as necessary
+
+        localStorage.setItem("token", data.token);
+        navigate("/landing");
       } else {
-        Swal.fire({
-          title: "Error!",
-          text: data.message || "Registration failed!",
-          icon: "error",
-          confirmButtonText: "Try Again",
-        });
+        switch (response.status) {
+          case 400:
+            Swal.fire({ title: "Error!", text: data.message || "Invalid input!", icon: "error" });
+            break;
+          case 409:
+            Swal.fire({
+              title: "Error!",
+              text: "This email is already registered. Try logging in instead.",
+              icon: "error",
+              confirmButtonText: "OK",
+            });
+            break;
+          case 500:
+            Swal.fire({ title: "Server Error!", text: "Something went wrong. Try again later.", icon: "error" });
+            break;
+          default:
+            Swal.fire({ title: "Error!", text: data.message || "Registration failed!", icon: "error" });
+        }
       }
     } catch (error) {
       console.error("Error during registration:", error);
       Swal.fire({
         title: "Error!",
-        text: "An error occurred. Please try again later.",
+        text: "Network error. Please check your internet connection.",
         icon: "error",
         confirmButtonText: "OK",
       });
@@ -93,8 +125,10 @@ const SignUp = () => {
             name="name"
             value={name}
             onChange={handleChange}
+            className={errors.name ? "error-input" : ""}
             required
           />
+          {errors.name && <p className="error-text">{errors.name}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -104,19 +138,28 @@ const SignUp = () => {
             name="email"
             value={email}
             onChange={handleChange}
+            className={errors.email ? "error-input" : ""}
             required
           />
+          {errors.email && <p className="error-text">{errors.email}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-wrapper">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              className={errors.password ? "error-input" : ""}
+              required
+            />
+            <button type="button" className="toggle-password" onClick={togglePasswordVisibility}>
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
+          {errors.password && <p className="error-text">{errors.password}</p>}
         </div>
         <button type="submit" className="btn">
           Register

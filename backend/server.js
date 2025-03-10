@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/ireland";
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/explore_ireland";
 
 const allowedOrigins = [
   "http://localhost:5173", // Local frontend
