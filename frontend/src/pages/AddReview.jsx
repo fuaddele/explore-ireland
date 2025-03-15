@@ -1,49 +1,47 @@
 import React, { useState } from "react";
-import Swal from "sweetalert2"; // Import SweetAlert
-import Navbar from "./Navbar"; // Import the Navbar component
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Swal from "sweetalert2"; 
+import Navbar from "./Navbar"; 
 import "../css/AddReview.css";
-import axios from "axios"; // Import axios for API requests
+import axios from "axios"; 
 
 const AddReview = () => {
-  const [rating, setRating] = useState(0); // State for storing rating value
-  const [attractionName, setAttractionName] = useState(""); // State for attraction name
-  const [content, setContent] = useState(""); // Rename description to content
-  const [userEmail, setUserEmail] = useState(""); // State for user email
-  const [title, setTitle] = useState(""); // State for review title
-
-  const API_URL = import.meta.env.VITE_API_URL; // Get the API URL from the environment variables
+  const [rating, setRating] = useState(0);
+  const [attractionName, setAttractionName] = useState("");
+  const [content, setContent] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [title, setTitle] = useState("");
+  
+  const navigate = useNavigate(); // Initialize navigate function
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Send data to the backend with title and content (now content)
       const response = await axios.post(`${API_URL}/api/reviews`, {
-        title, // Include title
+        title,
         attractionName,
-        content, // Content field is now the renamed content
+        content,
         rating,
-        userEmail, // Include email in the request body
+        userEmail,
       });
 
-      // Check if the response is successful
       if (response.status === 201) {
-        // Show SweetAlert confirmation
         Swal.fire({
           title: "Review Submitted!",
-          text: `You rated this attraction: ${"★".repeat(rating)}${"☆".repeat(
-            5 - rating
-          )}`,
+          text: `You rated this attraction: ${"★".repeat(rating)}${"☆".repeat(5 - rating)}`,
           icon: "success",
           confirmButtonText: "OK",
+        }).then(() => {
+          navigate("/reviews"); // Redirect user after clicking OK
         });
 
-        // Reset form fields
         setAttractionName("");
-        setContent(""); // Reset content field
+        setContent("");
         setRating(0);
-        setUserEmail(""); // Reset email field
-        setTitle(""); // Reset title field
+        setUserEmail("");
+        setTitle("");
       } else {
         throw new Error("Failed to submit review");
       }
@@ -56,10 +54,6 @@ const AddReview = () => {
       });
       console.error("Error submitting review:", err);
     }
-  };
-
-  const handleRating = (rate) => {
-    setRating(rate);
   };
 
   return (
@@ -90,10 +84,10 @@ const AddReview = () => {
 
           <label htmlFor="content">Your Review:</label>
           <textarea
-            id="content" // Changed the ID from "review" to "content"
+            id="content"
             placeholder="Write your review here..."
             value={content}
-            onChange={(e) => setContent(e.target.value)} // Use content instead of description
+            onChange={(e) => setContent(e.target.value)}
             required
           ></textarea>
 
@@ -114,7 +108,7 @@ const AddReview = () => {
                 <span
                   key={star}
                   className={`star ${rating >= star ? "filled" : ""}`}
-                  onClick={() => handleRating(star)}
+                  onClick={() => setRating(star)}
                 >
                   ★
                 </span>

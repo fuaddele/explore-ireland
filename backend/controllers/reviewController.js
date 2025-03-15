@@ -98,10 +98,49 @@ exports.addReview = async (req, res) => {
 
 exports.getAllReviews = async (req, res) => {
   try {
-    const reviews = await Review.find();
-    res.status(200).json({ reviews });
+    const reviews = await Review.find().sort({ createdAt: -1 }); // Sort by newest first
+    res.status(200).json({ success: true, reviews });
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server error");
+    console.error("Error fetching reviews:", err.message);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+// Update a review
+exports.updateReview = async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+
+    if (!review) return res.status(404).json({ error: "Review not found" });
+
+    if (review.user.toString() !== req.user.id) {
+      return res.status(403).json({ error: "Unauthorized" });
+    }
+
+    review.content = req.body.content || review.content;
+    review.rating = req.body.rating || review.rating;
+    await review.save();
+
+    res.json({ message: "Review updated!", review });
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+// Delete a review
+exports.deleteReview = async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+
+    if (!review) return res.status(404).json({ error: "Review not found" });
+
+    if (review.user.toString() !== req.user.id) {
+      return res.status(403).json({ error: "Unauthorized" });
+    }
+
+    await review.remove();
+    res.json({ message: "Review deleted!" });
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
   }
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Navbar from "./Navbar";
 import Swal from "sweetalert2";
 import "../css/FaqForm.css";
@@ -10,6 +11,7 @@ const FaqForm = () => {
     faq: "",
   });
   const [loading, setLoading] = useState(false); // Loading state
+  const navigate = useNavigate(); // Initialize useNavigate for redirection
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,11 +21,11 @@ const FaqForm = () => {
     }));
   };
 
-  const API_URL = import.meta.env.VITE_API_URL; // Get the API URL from environment variables
+  const API_URL = import.meta.env.VITE_API_URL; // Get API URL from environment variables
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when the form is submitted
+    setLoading(true);
 
     try {
       const response = await fetch(`${API_URL}/api/faqs`, {
@@ -31,20 +33,21 @@ const FaqForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), // Send the form data as a JSON object
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-      setLoading(false); // Set loading to false after receiving the response
+      setLoading(false);
 
       if (response.ok) {
         Swal.fire({
           icon: "success",
-          title: "FAQ Submitted!",
-          text: "Your FAQ has been submitted successfully!",
+          title: "Query Submitted!",
+          text: "Your Query has been submitted successfully!",
+        }).then(() => {
+          navigate("/faq"); // Redirect to FAQ page after confirmation
         });
 
-        console.log(data.faq); // Log the returned FAQ data
         setFormData({ name: "", email: "", faq: "" }); // Reset the form
       } else {
         Swal.fire({
@@ -54,11 +57,11 @@ const FaqForm = () => {
         });
       }
     } catch (error) {
-      setLoading(false); // Set loading to false in case of error
+      setLoading(false);
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Error submitting FAQ. Please try again.",
+        text: "Error submitting Query. Please try again.",
       });
     }
   };
@@ -67,7 +70,7 @@ const FaqForm = () => {
     <div>
       <Navbar />
       <div className="faq-form-container">
-        <h2>Submit a FAQ</h2>
+        <h2>Submit a Query</h2>
         <form onSubmit={handleSubmit} className="faq-form">
           <label htmlFor="name">Name:</label>
           <input
@@ -89,7 +92,7 @@ const FaqForm = () => {
             required
           />
 
-          <label htmlFor="faq">FAQ:</label>
+          <label htmlFor="faq">Query:</label>
           <textarea
             id="faq"
             name="faq"
@@ -100,14 +103,14 @@ const FaqForm = () => {
           ></textarea>
 
           <button type="submit" disabled={loading}>
-            {loading ? "Submitting..." : "Submit FAQ"}
+            {loading ? "Submitting..." : "Submit Query"}
           </button>
         </form>
 
         {/* Show the spinner if loading */}
         {loading && (
           <div className="loading-spinner">
-            <div className="spinner"></div> {/* You can add a spinner here */}
+            <div className="spinner"></div>
           </div>
         )}
       </div>

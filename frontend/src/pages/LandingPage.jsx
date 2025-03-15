@@ -11,49 +11,42 @@ import galwayCathedral from "../assets/images/galway-cathedral.jpg"; // Import n
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [featuredAttractions, setFeaturedAttractions] = useState([
+  const [featuredAttractions] = useState([
     {
       name: "Guinness Storehouse",
       image: guinnessStorehouse,
       description:
         "Explore the story of Guinness and enjoy panoramic views of Dublin.",
-      link: "/guinness-storehouse",
     },
     {
       name: "Dublin Zoo",
       image: dublinZoo,
       description:
         "Discover exotic animals and lush landscapes in one of Europe's oldest zoos.",
-      link: "/dublin-zoo",
     },
     {
       name: "National Gallery of Ireland",
       image: nationalGallery,
       description: "Marvel at Irish and European art in this stunning gallery.",
-      link: "/national-gallery",
     },
     {
       name: "Trinity College",
       image: trinityCollege,
       description:
         "Visit the historic campus and see the world-famous Book of Kells.",
-      link: "/trinity-college",
     },
     {
       name: "Phoenix Park",
       image: phoenixPark,
       description: "Relax in one of the largest walled city parks in Europe.",
-      link: "/phoenix-park",
     },
     {
       name: "Galway Cathedral", // New attraction
       image: galwayCathedral,
       description:
         "Experience the grandeur of one of Galway’s most iconic landmarks.",
-      link: "/galway-cathedral",
     },
+    
   ]);
 
   useEffect(() => {
@@ -63,20 +56,6 @@ const LandingPage = () => {
     }
   }, [navigate]);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-
-    const googleApiKey = "YOUR_GOOGLE_API_KEY"; // Replace with your API key
-    const response = await fetch(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchQuery}&key=${googleApiKey}`
-    );
-    const data = await response.json();
-    setSearchResults(data.results);
-  };
-
-  const handleSelectAttraction = (placeName) => {
-    navigate(`/${placeName.toLowerCase().replace(/\s+/g, "-")}`);
-  };
 
   return (
     <div>

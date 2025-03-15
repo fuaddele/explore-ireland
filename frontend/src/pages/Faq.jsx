@@ -19,17 +19,15 @@ const Faq = () => {
         <div className="faq-item" style={{ marginBottom: "15px" }}>
           <h3 style={{ marginBottom: "5px" }}>What is Explore Ireland?</h3>
           <p>
-            Explore Ireland is a platform that showcases the best tourist
-            attractions across Ireland.
+            Explore Ireland is a platform takes you to where you wanna go without delay.
           </p>
         </div>
         <div className="faq-item" style={{ marginBottom: "15px" }}>
           <h3 style={{ marginBottom: "5px" }}>
-            How can I add my favorite attractions?
+            Can I change my email if I need to?
           </h3>
           <p>
-            You can add your favorite attractions by clicking the 'Add to
-            Favourites' button on each attraction page.
+            Of course you can, just update your information in your user profile section.
           </p>
         </div>
         <div className="faq-item" style={{ marginBottom: "15px" }}>
@@ -50,7 +48,7 @@ const Faq = () => {
           textDecoration: "none",
         }}
       >
-        Add FAQ
+        Ask a Question
       </a>
     </div>
   );

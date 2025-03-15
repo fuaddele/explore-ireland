@@ -45,15 +45,15 @@ router.post("/", async (req, res) => {
     const adminMailOptions = {
       from: process.env.EMAIL_USER,
       to: "fuaddganiyu@gmail.com", // Replace with admin's email
-      subject: "New FAQ Submitted",
-      text: `A new FAQ has been submitted by ${name}.\n\nQuestion: ${faq}\n\nEmail: ${email}`,
+      subject: "New Query Submitted",
+      text: `A new Query has been submitted by ${name}.\n\nQuestion: ${faq}\n\nEmail: ${email}`,
     };
 
     // Email to User
     const userMailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "Thank you for your FAQ",
+      subject: "Thank you for your Query",
       text: `Hello ${name},\n\nThank you for reaching out with your question! We will get back to you shortly.\n\nYour Question: ${faq}`,
     };
 
@@ -62,7 +62,7 @@ router.post("/", async (req, res) => {
     await transporter.sendMail(userMailOptions);
 
     res.status(201).json({
-      message: "FAQ added and emails sent successfully",
+      message: "Query added and emails sent successfully",
       faq: savedFaq,
     });
   } catch (err) {
