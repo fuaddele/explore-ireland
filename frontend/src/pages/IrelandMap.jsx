@@ -73,7 +73,7 @@ const IrelandAttractionsMap = () => {
         const infoWindow = new google.maps.InfoWindow({
           content: `
             <div>
-              <b>${attraction.name}</b><br>
+              <b style="color: black;">${attraction.name}</b><br>
               <a href="${attraction.link}" target="_blank">Visit website</a><br>
               <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
                 attraction.name
