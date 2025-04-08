@@ -15,13 +15,6 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { name, email, password } = formData;
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      navigate("/landing");
-    }
-  }, [navigate]);
-
   // Toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);

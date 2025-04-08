@@ -1,20 +1,7 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "../css/HomePage.css"; // For styles
 
 const HomePage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if the user is authenticated
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      navigate("/signup"); // Redirect to login if no token
-    } else {
-      navigate("/landing"); // Redirect to landing page if token exists
-    }
-  }, [navigate]);
 
   return (
     <div className="welcome-container">

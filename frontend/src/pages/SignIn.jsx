@@ -14,14 +14,6 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { email, password } = formData;
 
-  // Redirect if user is already logged in
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      navigate("/landing");
-    }
-  }, [navigate]);
-
   // Toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
